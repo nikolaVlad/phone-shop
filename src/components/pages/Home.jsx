@@ -8,7 +8,7 @@ import Phone from "../Phone";
 
 export default function Home() {
   const api = 'http://localhost:4000/devices';
-  const mainImage = 'https://images.unsplash.com/photo-1580974928064-f0aeef70895a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80'
+  const mainImage = 'https://pbs.twimg.com/media/EkUTsENXYAULd_p.jpg'
 
   const [showAll, setShowAll] = useState(false);
   const [devices, setDevices] = useState([]);
