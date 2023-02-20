@@ -1,9 +1,8 @@
 import { Button } from "@material-ui/core"
 import styled from "styled-components"
 
-export default function Card({lg, image, name})
-{
-  return(
+export default function Card({ lg, image, name, onOpen, onAdd, inCart }) {
+  return (
     <Wrapper lg={lg}>
       <ImagePlace>
         <img alt="phone" src={image} />
@@ -12,10 +11,12 @@ export default function Card({lg, image, name})
       <Name>
         {name}
       </Name>
-      <Buttons>
-        <Button color="primary" variant="outlined" >Vidi</Button>
-        <Button color="secondary" variant="contained">Dodaj u korpu</Button>
-      </Buttons>
+      {!inCart &&
+        <Buttons>
+          <Button onClick={(index) => onOpen(index)} color="primary" variant="outlined" >Vidi</Button>
+          <Button onClick={(index) => onAdd(index)} color="secondary" variant="contained">Dodaj u korpu</Button>
+        </Buttons>}
+      {inCart && <InCart>Artikal je u korpi</InCart>}
     </Wrapper>
   )
 }
@@ -25,13 +26,14 @@ export default function Card({lg, image, name})
 const Wrapper = styled.div`
   width: 280px;
   height: 350px;
-  margin-top: ${({lg}) => lg ? '-20px' : ''};
+  margin-top: ${({ lg }) => lg ? '-20px' : ''};
 
   /* background-color: #80808057; */
   border-radius: 10px ;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
+  border:  ${({ lg }) => lg ? '1.5px solid orange' : ''}; ;
 `
 const ImagePlace = styled.div`
   width: 100%;
@@ -70,4 +72,10 @@ const Buttons = styled.div`
   justify-content: space-between;
   padding: 0px 20px;
   padding-bottom: 20px;
+`
+
+const InCart = styled.div`
+  margin-bottom: 30px;
+  color: #2596be;
+  font-weight: bold;
 `

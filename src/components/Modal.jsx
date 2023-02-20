@@ -1,11 +1,12 @@
 import styled from "styled-components"
 
-export default function Modal()
-{
-  return(
+export default function Modal({ children }) {
+  return (
     <Wrapper>
       <Body>
-       <Content> Content</Content>
+        <Content>
+          {children}
+        </Content>
       </Body>
     </Wrapper>
   )
@@ -13,17 +14,19 @@ export default function Modal()
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
-  position: absolute;
+  min-height: 120vh;
+  height: 100%;
+  position: fixed;
   background-color: #0000007b;
   display: flex;
   justify-content: center;
-  z-index: 10;
+  z-index: 30;
+
   
 `
 
 const Body = styled.div`
-  padding: 50px;
+  padding: 60px;
 `
 
 const Content = styled.div`
@@ -34,4 +37,8 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 120px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
 `
